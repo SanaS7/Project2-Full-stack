@@ -47,7 +47,13 @@ This project will tackle the problem of wrangling Charlottesville’s various st
 *	Mapping library (leaflet)
 *	Tabular view of data (tabulator)
 
-
+## SCREEN SHOTS
+![screenshot](public/images/1.jpg)
+![screenshot](public/images/2.jpg)
+![screenshot](public/images/3.jpg)
+![screenshot](public/images/4.jpg)
+![screenshot](public/images/5.jpg)
+![screenshot](public/images/6.jpg)
 
 
 
