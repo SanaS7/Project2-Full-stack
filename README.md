@@ -47,6 +47,10 @@ This project will tackle the problem of wrangling Charlottesville’s various st
 *	Mapping library (leaflet)
 *	Tabular view of data (tabulator)
 
+## Deployement
+    
+<a href="https://light-cville-a1bf6c73cf99.herokuapp.com/">Heroku Deploymemt</a>
+
 ## SCREEN SHOTS
 ![screenshot](public/images/1.jpg)
 ![screenshot](public/images/2.jpg)
