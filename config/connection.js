@@ -15,7 +15,7 @@ if (process.env.JAWSDB_URL) {
     {
       host: 'localhost',      // Database host
       dialect: 'mysql',       // Database dialect (MySQL in this case)
-      port: 3306              // Database port (default MySQL port)
+      port: 3301              // Database port (default MySQL port)
     }
   );
 }
