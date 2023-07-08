@@ -1,12 +1,12 @@
 ## PROJECT REQUIREMENT
 
-You and your group will use everything you’ve learned over the past six units to create a real-world full-stack application that you’ll be able to showcase to potential employers. The user story and acceptance criteria will depend on the project that you create, but your project must fulfil the following requirements:
+You and your group will use everything you’ve learned over the past six units to create a real-world full-stack application that you’ll be able to showcase to potential employers. The user story and acceptance criteria will depend on the project that you create, but your project must fullfil the following requirements:
 
 * Use Node.js and Express.js to create a RESTful API.
 
 * Use Handlebars.js as the template engine.
 
-* Use MySQL and the Sequelize ORM for the database.
+* Use Mongo DB for the database.
 
 * Have both GET and POST routes for retrieving and adding new data.
 
@@ -67,7 +67,7 @@ This project will tackle the problem of wrangling Charlottesville’s various st
   * JavaScript
   * Express.js
   * Node.js
-  * MySQL2 
+  * Mongoose 
   * Sequelize 
   * Express.handlebars 
   * Dotenv 
