@@ -2,12 +2,12 @@
 * {box-sizing: border-box}
 
 body {
-  font-family:'Times New Roman', Times, serif;
-  font-size: 25px;
+  font-family:'Arial', sans-serif; /* Change the font family */
+  font-size: 22px; /* Reduce the font size */
 }
 
- h1 {
-  font-family:'Times New Roman', Times, serif;
+h1 {
+  font-family:'Arial', sans-serif; /* Change the font family */
   background-color:rgb(82, 134, 158);
   padding-top: 15px;
   width: 100%;
@@ -15,44 +15,43 @@ body {
   margin: 5px 0 22px 0;
   display: inline-block;
   border: none;
-  font-size: 32px;
+  font-size: 28px; /* Adjust the font size */
   color: #D0F8FF;
   text-shadow: 0 0 5px #A5F1FF, 0 0 10px #A5F1FF,
            0 0 20px #A5F1FF, 0 0 30px #A5F1FF,
            0 0 40px #A5F1FF;
- }
-
+}
 
 input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
+  background-color: #eee; /* Change the background color */
   outline: none;
 }
 
 hr {
   border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+  margin-bottom: 20px; /* Reduce the margin */
 }
 
 /* Set a style for all buttons */
 button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: black;
+  background-color: #118877; /* Change the background color */
+  color: #fff; /* Change the text color */
+  padding: 12px 18px; /* Adjust the padding */
+  margin: 6px 0; /* Adjust the margin */
+  border: none;
   cursor: pointer;
   width: 100%;
   opacity: 0.9;
-  font-size: 25px;
-  border-radius: 5px;
+  font-size: 22px; /* Reduce the font size */
+  border-radius: 4px;
 }
 
 button:hover {
-  opacity:1;
+  opacity: 1;
 }
 
 .container {
-  padding: 16px;
+  padding: 14px; /* Adjust the padding */
 }
 
 /* Clear floats */
@@ -62,8 +61,24 @@ button:hover {
   display: table;
 }
 
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-    width: 100%;
-  }
+/* Additional color modifications */
+
+/* Change the background color for the body */
+body {
+  background-color: #F3F7F9;
+}
+
+/* Change the text color for headings */
+h1 {
+  color: #325D79;
+}
+
+/* Change the border color for input fields */
+input[type=text], input[type=password] {
+  border: 1px solid #C0C0C0;
+}
+
+/* Change the background color for buttons on hover */
+button:hover {
+  background-color: #0D7254;
 }
