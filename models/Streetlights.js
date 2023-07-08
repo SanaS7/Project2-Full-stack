@@ -1,79 +1,62 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const mongoose = require('mongoose');
 
-class Streetlights extends Model {}
-
-Streetlights.init(
-  {
-    id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    watts : {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-    },
-    decal_colo:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    decal_numb:{
-      type : DataTypes.STRING,
-      allowNull: true,
-    },
-    mount_heig:{
-      type:DataTypes.INTEGER,
-      allowNull: true,
-    },
-    owner:{
-      type:DataTypes.STRING,
-      allowNull: true,
-    },
-    install_da:{
-      type: DataTypes.DATE,
-      allowNull: true,
-    },
-    style:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    work_effec:{
-      type: DataTypes.DATE,
-      allowNull: true, 
-    },
-    lumens:{
-      type:DataTypes.INTEGER,
-      allowNull: true,
-    },
-    contract_n:{
-      type:DataTypes.INTEGER,
-      allowNull: true,
-    },
-    nom_volt:{
-      type:DataTypes.INTEGER,
-      allowNull: true,
-    },
-    base_colo:{
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
-    latitude:{
-      type:DataTypes.DECIMAL(10, 8),
-    },
-    longitude:{
-      type:DataTypes.DECIMAL(10, 8),
-   },
+const StreetlightsSchema = new mongoose.Schema({
+  watts: {
+    type: Number,
+    allowNull: true,
   },
-  
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'streetlights',
-  }
-);
+  decal_colo: {
+    type: String,
+    allowNull: true,
+  },
+  decal_numb: {
+    type: String,
+    allowNull: true,
+  },
+  mount_heig: {
+    type: Number,
+    allowNull: true,
+  },
+  owner: {
+    type: String,
+    allowNull: true,
+  },
+  install_da: {
+    type: Date,
+    allowNull: true,
+  },
+  style: {
+    type: String,
+    allowNull: true,
+  },
+  work_effec: {
+    type: Date,
+    allowNull: true,
+  },
+  lumens: {
+    type: Number,
+    allowNull: true,
+  },
+  contract_n: {
+    type: Number,
+    allowNull: true,
+  },
+  nom_volt: {
+    type: Number,
+    allowNull: true,
+  },
+  base_colo: {
+    type: String,
+    allowNull: true,
+  },
+  latitude: {
+    type: mongoose.Decimal128,
+  },
+  longitude: {
+    type: mongoose.Decimal128,
+  },
+});
+
+const Streetlights = mongoose.model('Streetlights', StreetlightsSchema);
 
 module.exports = Streetlights;

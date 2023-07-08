@@ -1,54 +1,64 @@
-const sequelize = require('../config/connection');
-const { Streetlights  } = require('../models');
-
-// importing streetlights.json. This is where all the data lives
+const mongoose = require('mongoose');
+const Streetlights = require('../models/Streetlights');
 const streetlightData = require('./streetlights.json');
 
-// mapping our data to a better format
+// Mapping our data to a better format
 const newData = streetlightData.features.map((item) => {
-  
-  // deconstruct data about each streetlight (item)
-  const { WATTS, DECAL_COLO, DECAL_NUMB, MOUNT_HEIG, OWNER, INSTALL_DA, STYLE, WORK_EFFEC, LUMENS, CONTRACT_N, NOM_VOLT, BASE_COLO } = item.properties
+  // Deconstruct data about each streetlight (item)
+  const {
+    WATTS,
+    DECAL_COLO,
+    DECAL_NUMB,
+    MOUNT_HEIG,
+    OWNER,
+    INSTALL_DA,
+    STYLE,
+    WORK_EFFEC,
+    LUMENS,
+    CONTRACT_N,
+    NOM_VOLT,
+    BASE_COLO,
+  } = item.properties;
 
-  const obj = {
+  return {
     watts: WATTS,
-    decal_colo : DECAL_COLO,
+    decal_colo: DECAL_COLO,
     decal_numb: DECAL_NUMB,
     mount_heig: MOUNT_HEIG,
     owner: OWNER,
     install_da: INSTALL_DA,
     style: STYLE,
     work_effec: WORK_EFFEC,
-    lumens:LUMENS,
-    contract_n:CONTRACT_N,
-    nom_volt:NOM_VOLT,
-    base_colo:BASE_COLO,
+    lumens: LUMENS,
+    contract_n: CONTRACT_N,
+    nom_volt: NOM_VOLT,
+    base_colo: BASE_COLO,
     latitude: item.geometry.coordinates[1],
     longitude: item.geometry.coordinates[0],
-  }
-
-  return obj
-
+  };
 });
 
-// aa
-
 const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
-  
-  for (const streetlight of newData) {
-    // create new streetlights record in database
-    await Streetlights.create({
-      //spread data for each streetlight
-      ...streetlight
+  try {
+    await mongoose.connect('mongodb+srv://boybrown552:zXgo9cMzbRgxnJ4P@cluster0.zsze6ft.mongodb.net/lightCville_db=true&w=majority', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
     });
+
+    // Clear the existing Streetlights collection in MongoDB
+    await Streetlights.deleteMany();
+
+    // Insert new streetlights data into MongoDB
+    await Streetlights.insertMany(newData);
+
+    console.log('Database seeded successfully');
+    process.exit(0);
+  } catch (err) {
+    console.error(err);
+    process.exit(1);
   }
-
-  process.exit(0);
-}
-
+};
 
 seedDatabase();
 
-
-module.exports = {seedDatabase,newData};
+module.exports = { seedDatabase, newData };

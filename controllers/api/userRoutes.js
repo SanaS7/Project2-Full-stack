@@ -1,4 +1,3 @@
-// Import the required dependencies
 const router = require('express').Router();
 const { User } = require('../../models');
 
@@ -6,19 +5,15 @@ const { User } = require('../../models');
 router.post('/', async (req, res) => {
   try {
     // Create a new user record in the database using the provided data
-    const userData = await User.create({
+    const newUser = await User.create({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
     });
 
-    // Set up sessions with a 'loggedIn' variable set to 'true'
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      res.status(200).json(userData);
-    });
+    res.status(200).json(newUser);
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json(err);
   }
 });
@@ -28,10 +23,8 @@ router.post('/login', async (req, res) => {
   try {
     // Validate the username and email provided
     const userData = await User.findOne({
-      where: {
-        name: req.body.name,
-        email: req.body.email
-      }
+      name: req.body.name,
+      email: req.body.email,
     });
 
     // If no user is found, return an error response
@@ -49,13 +42,9 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // Set up sessions with a 'loggedIn' variable set to 'true'
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      res.status(200).json({ user: userData, message: 'You are now logged in!' });
-    });
+    res.status(200).json({ user: userData, message: 'You are now logged in!' });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json(err);
   }
 });

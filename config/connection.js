@@ -1,23 +1,27 @@
-const Sequelize = require('sequelize');
+const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
-let sequelize;
+let mongoClient;
 
-if (process.env.JAWSDB_URL) {
-  // Use the JAWSDB_URL environment variable if available (production environment)
-  sequelize = new Sequelize(process.env.JAWSDB_URL);
+if (process.env.MONGODB_URI) {
+  // Use the MONGODB_URI environment variable if available (production environment)
+  mongoClient = new MongoClient(process.env.MONGODB_URI);
 } else {
-  // Use the local MySQL configuration (development environment)
-  sequelize = new Sequelize(
-    process.env.DB_NAME,      // Database name
-    process.env.DB_USER,      // Database username
-    process.env.DB_PASSWORD,  // Database password
-    {
-      host: 'localhost',      // Database host
-      dialect: 'mysql',       // Database dialect (MySQL in this case)
-      port: 3301              // Database port (default MySQL port)
-    }
-  );
+  // Use the local MongoDB configuration (development environment)
+  const url = 'mongodb+srv://boybrown552:zXgo9cMzbRgxnJ4P@cluster0.zsze6ft.mongodb.net/'; 
+
+  const dbName = process.env.DB_NAME;      // Database name
+
+  mongoClient = new MongoClient(url, { useNewUrlParser: true, useUnifiedTopology: true });
 }
 
-module.exports = sequelize;
+// Connect to MongoDB and retrieve the database object
+mongoClient.connect((err, client) => {
+  if (err) {
+    console.error('Error connecting to MongoDB:', err);
+  } else {
+    const db = client.db(dbName);
+    module.exports = db;
+    console.log('Connected to MongoDB successfully.');
+  }
+});

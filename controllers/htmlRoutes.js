@@ -1,22 +1,14 @@
-// Import the required dependencies
 const router = require('express').Router();
 const { Streetlights, User } = require('../models');
 
 // GET all users for homepage
 router.get('/', async (req, res) => {
   try {
-    // Retrieve all users from the database, including their 'loggedIn' attribute
-    const userData = await User.findAll({
-      include: [
-        {
-          model: User,
-          attributes: ['loggedIn'],
-        },
-      ],
-    });
+    // Retrieve all users from the MongoDB collection, including their 'loggedIn' attribute
+    const userData = await User.find();
 
     // Map the user data to plain JavaScript objects
-    const users = userData.map((user) => user.get({ plain: true }));
+    const users = userData.map((user) => user.toObject());
 
     // Render the 'login' view and pass the user data and the 'loggedIn' value from the session
     res.render('login', {
@@ -24,7 +16,7 @@ router.get('/', async (req, res) => {
       loggedIn: req.session.loggedIn,
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     res.status(500).json(err);
   }
 });
