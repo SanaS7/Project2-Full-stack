@@ -49,7 +49,7 @@ This project will tackle the problem of wrangling Charlottesville’s various st
 
 ## Deployement
     
-<a href="https://light-cville-a1bf6c73cf99.herokuapp.com/">Heroku Deploymemt</a>
+<a href="https://light-cville-sana-94ced95d046e.herokuapp.com/">Heroku Deploymemt</a>
 
 ## SCREEN SHOTS
 ![screenshot](public/images/1.jpg)
