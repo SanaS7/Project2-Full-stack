@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const User = require('../../models/User');
 
 // Create a new user
 router.post('/', async (req, res) => {
@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Validate the encrypted password
-    const validPassword = userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.password);
 
     // If the password is invalid, return an error response
     if (!validPassword) {
