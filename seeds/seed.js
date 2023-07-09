@@ -40,7 +40,7 @@ const newData = streetlightData.features.map((item) => {
 
 const seedDatabase = async () => {
   try {
-    await mongoose.connect('mongodb+srv://boybrown552:zXgo9cMzbRgxnJ4P@cluster0.zsze6ft.mongodb.net/lightCville_db=true&w=majority', {
+    await mongoose.connect('mongodb://127.0.0.1:27017/lightCville_db', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
