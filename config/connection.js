@@ -8,7 +8,7 @@ if (process.env.MONGODB_URI) {
   mongoClient = new MongoClient(process.env.MONGODB_URI);
 } else {
   // Use the local MongoDB configuration (development environment)
-  const url = 'mongodb+srv://boybrown552:zXgo9cMzbRgxnJ4P@cluster0.zsze6ft.mongodb.net/'; 
+  const url = 'mongodb+srv://boybrown552:zXgo9cMzbRgxnJ4P@cluster0.zsze6ft.mongodb.net/lightCville_db=true&w=majority'; 
 
   const dbName = process.env.DB_NAME;      // Database name
 
