@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { Streetlights, User } = require('../models');
+const Streetlights = require('../models/Streetlights');
+const User = require('../models/User');
 
 // GET all users for homepage
 router.get('/', async (req, res) => {
