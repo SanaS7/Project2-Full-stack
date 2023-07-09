@@ -4,7 +4,7 @@ const { User } = require('../../models');
 const {Streetlights} =  require('../../models')
 
 // MongoDB connection URL
-const url = 'mongodb://127.0.0.1:27017/lightCville_db';
+const url = 'mongodb+srv://boybrown552:zXgo9cMzbRgxnJ4P@cluster0.zsze6ft.mongodb.net/lightCville_db=true&w=majority';
 
 // Database name
 const dbName = 'lightCville_db';
